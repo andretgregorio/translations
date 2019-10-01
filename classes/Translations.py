@@ -11,14 +11,15 @@ class Translations(object):
             key = r['Unnamed: 3']
             values = row[4:].to_dict()
             for locale, value in values.items():
+                value = cls.sanitize_string(value)
                 if cls.empty(value) and not cls.empty(locale):
                     default_locale = cls.getDefaultLocale(locale)
                     try:
                         default_value = values[default_locale]
                         if not cls.empty(default_value):
-                            value = default_value
+                            value = cls.sanitize_string(default_value)
                     except:
-                        print(f'No default value for locale {default_locale}')
+                        print(f'[WARNING] No default value for locale {default_locale}')
                 if not cls.empty(value) and not cls.empty(locale) and not cls.empty(key) and not cls.empty(feature):
                     queries.append(Query(key, feature, value, locale))
         return queries
@@ -40,3 +41,7 @@ class Translations(object):
         elif locale in portuguese_locales:
             return 'pt_BR'
         return locale
+    
+    @classmethod
+    def sanitize_string(cls, text):
+        return text.strip().replace("'", "''")

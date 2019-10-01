@@ -13,7 +13,7 @@ class Query(object):
             
     
     def update_query(self):
-        return f"""UPDATE translations SET `value`="{self.value}" WHERE `key`="{self.key}" and `locale`="{self.locale}";"""
+        return f"""UPDATE translations SET `value`='{self.value}' WHERE `key`='{self.key}' and `locale`='{self.locale}' and feature='{self.feature}';"""
     
     def insert_query(self):
-        return f"""INSERT INTO translations (`key`, 'feature', `value`, 'locale') values("{self.key}", "{self.feature}", "{self.value}", "{self.locale}");"""
+        return f"""INSERT INTO translations (`key`, 'feature', `value`, 'locale') values('{self.key}', '{self.feature}', '{self.value}', '{self.locale}');"""
