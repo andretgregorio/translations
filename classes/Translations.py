@@ -10,8 +10,9 @@ class Translations(object):
             feature = r['Unnamed: 2']
             key = r['Unnamed: 3']
             values = row[4:].to_dict()
-            for locale, value in values.items():
-                value = cls.sanitize_string(value)
+            for l, v in values.items():
+                value = cls.sanitize_string(v)
+                locale = cls.get_locale(l)
                 if cls.empty(value) and not cls.empty(locale):
                     default_locale = cls.getDefaultLocale(locale)
                     try:
@@ -22,6 +23,8 @@ class Translations(object):
                         print(f'[WARNING] No default value for locale {default_locale}')
                 if not cls.empty(value) and not cls.empty(locale) and not cls.empty(key) and not cls.empty(feature):
                     queries.append(Query(key, feature, value, locale))
+                else:
+                    print(f'[WARNING] Query no instancieated for {value} at locale {locale}')
         return queries
     
     @classmethod
@@ -45,3 +48,12 @@ class Translations(object):
     @classmethod
     def sanitize_string(cls, text):
         return text.strip().replace("'", "''")
+    
+    @classmethod
+    def get_locale(cls, locale):
+        if locale == 'es_ES':
+            return 'es'
+        elif locale == 'es':
+            return None
+        else:
+            return locale
