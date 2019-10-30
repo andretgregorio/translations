@@ -10,7 +10,7 @@ class CommandLine:
             '--query', 
             type=str, 
             default='update_value', 
-            help="The type of transaction that will be writter. Accepted values: 'insert' or 'update'"
+            help="The query to be generated. Accepted values are 'update_value', 'update_translation_status', 'insert'. If no argument is passed it defaults to update_value"
         )
         parser.add_argument(
             '-i', 
