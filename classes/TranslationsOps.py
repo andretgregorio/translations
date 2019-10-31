@@ -16,5 +16,5 @@ class TranslationsOps(object):
                 locale = Locale(l)
                 value = Value(v, values[locale.fallback])
                 if locale.main in desired_locales:
-                    translations.append(Translation.factory(key, feature, value.get(), locale.get(), translation_status))
+                    translations.append(Translation.factory(feature, key, value.get(), locale.get(), translation_status))
         return translations
