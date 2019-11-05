@@ -13,6 +13,8 @@ class Query(object):
             return self.update_value_query()
         elif transaction_type.lower() == 'update_translation_status':
             return self.update_translation_status_query()
+        else:
+            raise ValueError(f'Invalid argument for --query param. Argument found: "{transaction_type}". Accepted arguments are: "insert", "update_value" and "update_translation_status"')
             
     
     def update_translation_status_query(self):
