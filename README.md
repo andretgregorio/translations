@@ -19,10 +19,10 @@ Once you have checked you python3 installation, follow the steps bellow in your 
 
 ### Exemples
 *Generate queries to insert values for all locations from line 42 to line 47, with a translation_status of 10:*
-```python3 main.py -q=insert -i=42 -f=47```
+```python3 main.py -q=insert -i=41 -f=47```
 
 *Generates query to update only a few location to translation_status to 0:*
-```python3 main.py -q=update_translation_status -i=42 -f=47 -ts=0 -l=es_Cl,es_AR,es_MX```
+```python3 main.py -q=update_translation_status -i=41 -f=47 -ts=0 -l=es_Cl,es_AR,es_MX```
 
 *Generates query to update the value of all locations in the file:*
 ```python3 main.py -q=update_value -i=3 -f=8```
