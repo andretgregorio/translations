@@ -7,13 +7,14 @@ In order to execute the script, you must have python 3 installed in your machine
 Once you have checked you python3 installation, follow the steps bellow in your command line:
 
 1. `cd` to the project directory.
-2. `python3 main.py <options>`
+2. `$ pip install`
+3. `python3 main.py <options>`
 
 ### Options
 
 * *-q* or *--query*: string: tells the script to generate INSERT or UPDATE queries. Accepted values are 'insert', 'update_value' or 'update_translation_status'.
-* *-i* or *--initia-row*: int: the first line of the excel file to be included in the translation.
-* *-f* or *--final-row*: int: the last line of the excel file to be included in the tranlsation.
+* *-i* or *--initia-row*: int: the first line minus 1 of the excel file to be included in the translation. Ex: if you want to start at the line 3, use -i=2.
+* *-f* or *--final-row*: int: the last line of the excel file to be included in the tranlsation. This is really the last line.
 * *-ts* or *--translation-status*: int: the translation status for the query.
 * *-l* or *--locations*: string: a list of desired locations to generate the query. The locations should be comma separated.
 
